@@ -1,0 +1,113 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=line-stack&code=PYBwLglsB2AEC8sDeAoWtJgDYFMBcya6GOAHmAQOSVEC-ANEWMMFpCAasRgE4QDm_HDyoBDUhADONdAyK4h0ACaci6JaLCiCAbUoAhAKIAlACoB9AEajJOABQAZYMYCCASkr1YBkxayieIUdnd09vADEHFwA5AFpTAFYrG3snVw8vSkiY-KT_QNSQjIiouMTzUixg9MoAXTpGdH4-FUJuXAAzCm8AZgBSTzVYPn4AC27KABYBxuJLYDBmAFsqfsHuAGMYLQhoB1FLHCwCMB4AVxwGphYsedJVbg6cTTOefDbuWElRADccF0kAEklqIhJxaEMIbJZqQXBJJA9iGAAJ4gd6UDaaHD8YA8ZHrObAM7KALIgDiog4sA6oiwtlm6k02lgekMIGAG1GAEYwpQ2RzRgAmXn8zk9EXszmTCUChJ1K7oZFwqSI9AotFUH60i4yWBydC2Pg4BEsoZcT7QURLdFGMzJWzVUIMpGo9FYXY4AncSRaDYAayopgWtK9xA0Wl0AE4AOwAOgAbF5IwAOWOCpOp6NJyMJ7MJ-rcfXEc3cS3Wqi2vwBIJpJ1DNWuqju6Ce50G30B7xBrRYUOMiMs6Px2PJrzRnPp2CR4dZqdxycptMF4hF9Al4hl9HZMpJawO2sZesYRveZuto8-0T-wPB3tt2Dh5k6eM9XOwZPzrzJnOTJMABljX8py5WNo2XaEzSPTcqG3XJzHyGsij7Y8NVPD1kMva8u1vZDH10ZMQKAyNX0TOdYz_JM4y5SjAPAvVnXXdBoJKHJykqR1D0-FC3XQ-9MM7ShuxDe88JZSMQIXEiaJ6GjSMXQU6KhWB6loABuIA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/china.js"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  title: {
+    text: ''
+  },
+  tooltip: {
+    trigger: 'axis'
+  },
+  legend: {
+    data: ['BERT_base(LoRA)', 'BERT_large(LoRA)', 'FLAN-T5_base(LoRA)', 'FLAN-T5_large(LoRA)', 'FLAN-T5_xl(LoRA)']
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  toolbox: {
+    feature: {
+      saveAsImage: {}
+    }
+  },
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: ['Epoch1', 'Epoch2', 'Epoch3', 'Epoch4', 'Epoch5']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      name: 'BERT_base(LoRA)',
+      type: 'line',
+      stack: 'Total',
+      data: [97.6, 98.2, 98.7, 99.6, 99.6]
+    },
+    {
+      name: 'BERT_large(LoRA)',
+      type: 'line',
+      stack: 'Total',
+      data: [76.8, 79.2, 96.7, 97.2, 98.2]
+    },
+    {
+      name: 'FLAN-T5_base(LoRA)',
+      type: 'line',
+      stack: 'Total',
+      data: [63.6, 87.2, 89.4, 90.4, 91.7]
+    },
+    {
+      name: 'FLAN-T5_large(LoRA)',
+      type: 'line',
+      stack: 'Total',
+      data: [81.4, 93.6, 97.0, 97.1, 97.4]
+    },
+    {
+      name: 'FLAN-T5_xl(LoRA)',
+      type: 'line',
+      stack: 'Total',
+      data: [91.2, 93.6, 97.3, 97.6, 98.2]
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>

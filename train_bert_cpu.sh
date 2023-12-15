@@ -1,0 +1,11 @@
+python peft_train.py \
+--model_name /Users/wengbenjue/Documents/预训练模型/bert-base-cased \
+--max_seq_len 2048 \
+--group_by_length \
+--max_steps 200 \
+--dataset_name /Users/wengbenjue/sourcecode/peft/llms-peft-cook/text-classification/imdb \
+--max_length 128 \
+--model_type SEQ_CLS \
+--output_model_path result/bert-base-lora \
+--bnb_4bit_compute_dtype float32 \
+--use_4b False
